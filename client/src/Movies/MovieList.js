@@ -19,22 +19,25 @@ export default class MovieList extends Component {
         console.error('Server Error', error);
       });
   }
+  goToMovie (movie) {
+    this.props.history.push(`/movies/${movie.id}`)
+  }
 
   render() {
     return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
-          <MovieDetails key={movie.id} movie={movie} />
+          <MovieDetails key={movie.id} movie={movie} clickHandler={_ => this.goToMovie(movie)} />
         ))}
       </div>
     );
   }
 }
 
-function MovieDetails({ movie }) {
-  const { title, director, metascore, stars } = movie;
+function MovieDetails({ movie, clickHandler }) {
+  const { title, director, metascore, stars, id } = movie;
   return (
-    <div className="movie-card">
+    <div className="movie-card" onClick={clickHandler}>
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
