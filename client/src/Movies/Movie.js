@@ -42,7 +42,6 @@ export default class Movie extends Component {
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }
-
     return <MovieCard movie={this.state.movie} selectedMovie={true}/>
   }
 }

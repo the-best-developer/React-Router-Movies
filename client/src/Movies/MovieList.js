@@ -20,6 +20,7 @@ export default class MovieList extends Component {
         console.error('Server Error', error);
       });
   }
+  
   goToMovie (movie) {
     this.props.history.push(`/movies/${movie.id}`)
   }
